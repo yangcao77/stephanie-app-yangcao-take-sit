@@ -1,0 +1,22 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    build.appstudio.openshift.io/application: stephanie-app
+    build.appstudio.openshift.io/build: "true"
+    build.appstudio.openshift.io/component: nodejs
+    build.appstudio.openshift.io/type: build
+    build.appstudio.openshift.io/version: "0.1"
+    pipelines.appstudio.openshift.io/type: build
+  creationTimestamp: null
+  name: elnodejs
+  namespace: yangcao
+spec:
+  path: /
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: el-nodejs
+    weight: null
+status: {}
