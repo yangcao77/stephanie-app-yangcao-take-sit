@@ -14,8 +14,10 @@ spec:
     spec:
       containers:
       - env:
+        - name: FOO123
+          value: BAR123
         - name: FOO
-          value: BAR
+          value: Env_BAR
         image: quay.io/redhat-appstudio/user-workload:yangcao-nodejs
         name: container-image
         resources:
