@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: 1sample
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: 1sample
+    app.kubernetes.io/part-of: stephanie-app
+  name: 1sample
+  namespace: yangcao
+spec:
+  port:
+    targetPort: 8081
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: 1sample
+    weight: 100
+status: {}

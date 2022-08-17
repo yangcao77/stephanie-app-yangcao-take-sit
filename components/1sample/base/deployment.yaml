@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: 1sample
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: 1sample
+    app.kubernetes.io/part-of: stephanie-app
+  name: 1sample
+  namespace: yangcao
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: 1sample
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: 1sample
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload:yangcao-1sample
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8081
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        name: container-image
+        ports:
+        - containerPort: 8081
+        readinessProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          tcpSocket:
+            port: 8081
+        resources:
+          requests:
+            cpu: 10m
+            memory: 10Mi
+status: {}
