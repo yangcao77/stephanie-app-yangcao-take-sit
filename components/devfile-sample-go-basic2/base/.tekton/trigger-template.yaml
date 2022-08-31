@@ -2,8 +2,8 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   creationTimestamp: null
-  name: python-sample
-  namespace: yangcao
+  name: devfile-sample-go-basic2
+  namespace: application-service-system
 spec:
   params:
   - name: git-revision
@@ -12,39 +12,42 @@ spec:
     kind: PipelineRun
     metadata:
       annotations:
-        build.appstudio.openshift.io/application: stephanie-app
+        build.appstudio.openshift.io/application: application-sample
         build.appstudio.openshift.io/build: "true"
-        build.appstudio.openshift.io/component: python-sample
+        build.appstudio.openshift.io/component: devfile-sample-go-basic2
         build.appstudio.openshift.io/type: build
         build.appstudio.openshift.io/version: "0.1"
         pipelines.appstudio.openshift.io/type: build
       creationTimestamp: null
-      generateName: python-sample-
+      generateName: devfile-sample-go-basic2-
       labels:
-        build.appstudio.openshift.io/application: stephanie-app
+        build.appstudio.openshift.io/application: application-sample
         build.appstudio.openshift.io/build: "true"
-        build.appstudio.openshift.io/component: python-sample
+        build.appstudio.openshift.io/component: devfile-sample-go-basic2
         build.appstudio.openshift.io/type: build
         build.appstudio.openshift.io/version: "0.1"
         pipelines.appstudio.openshift.io/type: build
-      namespace: yangcao
+      namespace: application-service-system
     spec:
       params:
       - name: git-url
-        value: https://github.com/devfile-samples/devfile-sample-python-basic.git
+        value: https://github.com/devfile-samples/devfile-sample-go-basic
       - name: output-image
-        value: quay.io/redhat-appstudio/user-workload:yangcao-python-sample-$(tt.params.git-revision)
+        value: quay.io/redhat-appstudio/user-workload:application-service-system-devfile-sample-go-basic2-$(tt.params.git-revision)
       - name: dockerfile
         value: docker/Dockerfile
       - name: path-context
         value: .
       pipelineRef:
-        bundle: quay.io/redhat-appstudio/build-templates-bundle:8e1bdea59a9cbf2a3d8199af74ed4cc1939eebf2
+        bundle: quay.io/redhat-appstudio/build-templates-bundle:8201a567956ba6d2095d615ea2c0f6ab35f9ba5f
         name: docker-build
       workspaces:
       - name: workspace
         persistentVolumeClaim:
           claimName: appstudio
-        subPath: python-sample/$(tt.params.git-revision)
+        subPath: devfile-sample-go-basic2/$(tt.params.git-revision)
+      - name: registry-auth
+        secret:
+          secretName: redhat-appstudio-registry-pull-secret
     status: {}
 status: {}

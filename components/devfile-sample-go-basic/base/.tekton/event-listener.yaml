@@ -2,15 +2,15 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:
   annotations:
-    build.appstudio.openshift.io/application: stephanie-app
+    build.appstudio.openshift.io/application: application-sample
     build.appstudio.openshift.io/build: "true"
-    build.appstudio.openshift.io/component: 1sample
+    build.appstudio.openshift.io/component: devfile-sample-go-basic
     build.appstudio.openshift.io/type: build
     build.appstudio.openshift.io/version: "0.1"
     pipelines.appstudio.openshift.io/type: build
   creationTimestamp: null
-  name: 1sample
-  namespace: yangcao
+  name: devfile-sample-go-basic
+  namespace: application-service-system
 spec:
   namespaceSelector: {}
   resources: {}
@@ -20,7 +20,7 @@ spec:
     - kind: ClusterTriggerBinding
       ref: github-push
     template:
-      ref: 1sample
+      ref: devfile-sample-go-basic
 status:
   configuration:
     generatedName: ""
