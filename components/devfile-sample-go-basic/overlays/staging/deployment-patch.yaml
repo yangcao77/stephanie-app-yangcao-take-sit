@@ -14,8 +14,10 @@ spec:
     spec:
       containers:
       - env:
+        - name: FOO1
+          value: BAR1
         - name: FOO
-          value: BAR
+          value: Env_BAR
         image: quay.io/redhat-appstudio/user-workload:application-service-system-devfile-sample-go-basic
         name: container-image
         resources:
