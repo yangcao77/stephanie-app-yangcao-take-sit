@@ -20,7 +20,7 @@ spec:
         name: container-image
         resources:
           limits:
-            cpu: "2"
+            cpu: "3"
             memory: 500Mi
             storage: 400Mi
           requests:
