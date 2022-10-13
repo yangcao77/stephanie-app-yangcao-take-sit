@@ -3,7 +3,7 @@ kind: TriggerTemplate
 metadata:
   creationTimestamp: null
   name: devfile-sample-go-basic
-  namespace: application-service-system
+  namespace: default
 spec:
   params:
   - name: git-revision
@@ -12,28 +12,28 @@ spec:
     kind: PipelineRun
     metadata:
       annotations:
-        build.appstudio.openshift.io/application: application-sample
+        appstudio.openshift.io/application: application-sample
+        appstudio.openshift.io/component: devfile-sample-go-basic
         build.appstudio.openshift.io/build: "true"
-        build.appstudio.openshift.io/component: devfile-sample-go-basic
         build.appstudio.openshift.io/type: build
         build.appstudio.openshift.io/version: "0.1"
         pipelines.appstudio.openshift.io/type: build
       creationTimestamp: null
       generateName: devfile-sample-go-basic-
       labels:
-        build.appstudio.openshift.io/application: application-sample
+        appstudio.openshift.io/application: application-sample
+        appstudio.openshift.io/component: devfile-sample-go-basic
         build.appstudio.openshift.io/build: "true"
-        build.appstudio.openshift.io/component: devfile-sample-go-basic
         build.appstudio.openshift.io/type: build
         build.appstudio.openshift.io/version: "0.1"
         pipelines.appstudio.openshift.io/type: build
-      namespace: application-service-system
+      namespace: default
     spec:
       params:
       - name: git-url
         value: https://github.com/devfile-samples/devfile-sample-go-basic
       - name: output-image
-        value: quay.io/redhat-appstudio/user-workload:application-service-system-devfile-sample-go-basic-$(tt.params.git-revision)
+        value: quay.io/redhat-appstudio/user-workload:default-devfile-sample-go-basic-$(tt.params.git-revision)
       - name: dockerfile
         value: docker/Dockerfile
       - name: path-context
@@ -43,11 +43,15 @@ spec:
         name: docker-build
       workspaces:
       - name: workspace
-        persistentVolumeClaim:
-          claimName: appstudio
-        subPath: devfile-sample-go-basic/$(tt.params.git-revision)
-      - name: registry-auth
-        secret:
-          secretName: redhat-appstudio-registry-pull-secret
+        volumeClaimTemplate:
+          metadata:
+            creationTimestamp: null
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 1Gi
+          status: {}
     status: {}
 status: {}

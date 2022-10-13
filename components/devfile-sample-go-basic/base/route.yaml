@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/name: devfile-sample-go-basic
     app.kubernetes.io/part-of: application-sample
   name: devfile-sample-go-basic
-  namespace: application-service-system
+  namespace: default
 spec:
   host: route111
   port:
