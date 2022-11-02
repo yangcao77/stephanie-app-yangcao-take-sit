@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/name: devfile-sample-go-basic
     app.kubernetes.io/part-of: application-sample
   name: devfile-sample-go-basic
-  namespace: default
+  namespace: application-service-system
 spec:
   replicas: 1
   selector:
@@ -28,7 +28,7 @@ spec:
           value: foo1
         - name: BAR
           value: bar1
-        image: quay.io/redhat-appstudio/user-workload:default-devfile-sample-go-basic
+        image: quay.io/redhat-appstudio/user-workload:application-service-system-devfile-sample-go-basic
         imagePullPolicy: Always
         livenessProbe:
           httpGet:

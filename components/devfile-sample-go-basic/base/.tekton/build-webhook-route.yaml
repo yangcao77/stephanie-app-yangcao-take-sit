@@ -10,7 +10,7 @@ metadata:
     pipelines.appstudio.openshift.io/type: build
   creationTimestamp: null
   name: eldevfile-sample-go-basic
-  namespace: default
+  namespace: application-service-system
 spec:
   path: /
   port:
