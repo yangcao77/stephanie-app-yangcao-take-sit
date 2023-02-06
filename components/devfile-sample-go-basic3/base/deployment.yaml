@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: my-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: go-app
+    spec:
+      containers:
+      - env:
+        - name: FOO
+          value: foo1
+        - name: BAR
+          value: bar1
+        image: quay.io/redhat-appstudio/user-workload:application-service-system-devfile-sample-go-basic3
+        name: my-go
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        - containerPort: 1111
+        resources:
+          limits:
+            cpu: "2"
+            memory: 500Mi
+            storage: 400Mi
+          requests:
+            cpu: 700m
+            memory: 400Mi
+            storage: 200Mi
+status: {}
