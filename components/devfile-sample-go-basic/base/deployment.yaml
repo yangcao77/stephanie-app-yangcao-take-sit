@@ -2,25 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
-  labels:
-    app.kubernetes.io/created-by: application-service
-    app.kubernetes.io/instance: devfile-sample-go-basic
-    app.kubernetes.io/managed-by: kustomize
-    app.kubernetes.io/name: devfile-sample-go-basic
-    app.kubernetes.io/part-of: application-sample
-  name: devfile-sample-go-basic
-  namespace: application-service-system
+  name: my-go
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/instance: devfile-sample-go-basic
+      app: go-app
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app.kubernetes.io/instance: devfile-sample-go-basic
+        app: go-app
     spec:
       containers:
       - env:
@@ -29,21 +22,12 @@ spec:
         - name: BAR
           value: bar1
         image: quay.io/redhat-appstudio/user-workload:application-service-system-devfile-sample-go-basic
-        imagePullPolicy: Always
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 1111
-          initialDelaySeconds: 10
-          periodSeconds: 10
-        name: container-image
+        name: my-go
         ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
         - containerPort: 1111
-        readinessProbe:
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          tcpSocket:
-            port: 1111
         resources:
           limits:
             cpu: "2"

@@ -1,5 +1,5 @@
-apiVersion: triggers.tekton.dev/v1beta1
-kind: EventListener
+apiVersion: pipelinesascode.tekton.dev/v1alpha1
+kind: Repository
 metadata:
   annotations:
     appstudio.openshift.io/application: application-sample
@@ -12,15 +12,11 @@ metadata:
   name: devfile-sample-go-basic
   namespace: application-service-system
 spec:
-  namespaceSelector: {}
-  resources: {}
-  serviceAccountName: pipeline
-  triggers:
-  - bindings:
-    - kind: ClusterTriggerBinding
-      ref: github-push
-    template:
-      ref: devfile-sample-go-basic
-status:
-  configuration:
-    generatedName: ""
+  git_provider:
+    secret:
+      key: github.token
+      name: pipelines-as-code-secret
+    webhook_secret:
+      key: https___github.com_devfile-samples_devfile-sample-go-basic
+      name: pipelines-as-code-webhooks-secret
+  url: https://github.com/devfile-samples/devfile-sample-go-basic
