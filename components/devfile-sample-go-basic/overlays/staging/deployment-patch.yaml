@@ -6,7 +6,7 @@ metadata:
   namespace: application-service-system
 spec:
   replicas: 3
-  selector: null
+  selector: {}
   strategy: {}
   template:
     metadata:
