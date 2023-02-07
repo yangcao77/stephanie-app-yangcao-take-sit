@@ -2,18 +2,26 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
-  name: my-go
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-sample-go-basic2
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-sample-go-basic2
+    app.kubernetes.io/part-of: application-sample
+  name: devfile-sample-go-basic2
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: go-app
+      app.kubernetes.io/instance: devfile-sample-go-basic2
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
         app: go-app
+        app.kubernetes.io/instance: devfile-sample-go-basic2
     spec:
       containers:
       - env:
