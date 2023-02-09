@@ -41,7 +41,9 @@ spec:
           limits:
             cpu: "2"
             memory: 500Mi
+            storage: 400Mi
           requests:
             cpu: 700m
             memory: 400Mi
+            storage: 200Mi
 status: {}
