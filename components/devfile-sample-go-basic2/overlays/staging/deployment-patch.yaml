@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: devfile-sample-go-basic2
+  namespace: application-service-system
+spec:
+  replicas: 2
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - env:
+        - name: FOO2
+          value: BAR2
+        - name: FOO
+          value: Env_BAR
+        image: quay.io/redhat-appstudio/user-workload:application-service-system-devfile-sample-go-basic2
+        name: my-go
+        resources:
+          limits:
+            cpu: "3"
+            memory: 500Mi
+            storage: 400Mi
+          requests:
+            cpu: 700m
+            memory: 400Mi
+            storage: 200Mi
+status: {}
