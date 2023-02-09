@@ -2,7 +2,14 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   creationTimestamp: null
-  name: http-8081
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-sample-go-basic
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-sample-go-basic
+    app.kubernetes.io/part-of: application-sample
+  name: devfile-sample-go-basic
+  namespace: application-service-system
 spec:
   host: route111
   path: /
