@@ -6,3 +6,4 @@ patches:
 - test2.yaml
 resources:
 - ../../base
+- route.yaml
