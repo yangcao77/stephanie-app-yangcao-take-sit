@@ -9,7 +9,6 @@ metadata:
     app.kubernetes.io/name: devfile-sample-go-basic
     app.kubernetes.io/part-of: application-sample
   name: devfile-sample-go-basic
-  namespace: application-service-system
 spec:
   ports:
   - port: 1111
