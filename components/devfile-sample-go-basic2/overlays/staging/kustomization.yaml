@@ -4,3 +4,4 @@ patches:
 - deployment-patch.yaml
 resources:
 - ../../base
+- route.yaml
