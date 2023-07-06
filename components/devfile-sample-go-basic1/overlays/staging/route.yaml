@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/name: devfile-sample-go-basic1
     app.kubernetes.io/part-of: application-sample
-  name: devfile-sample-go-basic1
+  name: devfile-sample-go-basic1j6wv
 spec:
   host: route111
   path: /

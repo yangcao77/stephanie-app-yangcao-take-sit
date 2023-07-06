@@ -4,7 +4,6 @@ metadata:
   creationTimestamp: null
   name: devfile-sample-go-basic1
 spec:
-  replicas: 3
   selector: {}
   strategy: {}
   template:
@@ -13,8 +12,8 @@ spec:
     spec:
       containers:
       - env:
-        - name: FOO2
-          value: BAR2
+        - name: FOO1
+          value: BAR1
         - name: FOO
           value: Env_BAR
         image: quay.io/redhat-appstudio/user-workload:application-service-system-devfile-sample-go-basic1
