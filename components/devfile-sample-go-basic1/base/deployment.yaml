@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/instance: devfile-sample-go-basic1
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/name: devfile-sample-go-basic1
-    app.kubernetes.io/part-of: application-sample
+    app.kubernetes.io/part-of: application-sample2
   name: devfile-sample-go-basic1
 spec:
   replicas: 3
@@ -30,6 +30,8 @@ spec:
           value: foo1
         - name: BAR
           value: bar1
+        - name: SECRET
+          value: ghp_ip2utma1UdV9AMRNm
         image: go-image:latest
         name: my-go
         ports:

@@ -7,11 +7,12 @@ metadata:
     app.kubernetes.io/instance: devfile-sample-go-basic1
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/name: devfile-sample-go-basic1
-    app.kubernetes.io/part-of: application-sample
+    app.kubernetes.io/part-of: application-sample2
   name: devfile-sample-go-basic1
 spec:
   ports:
-  - port: 1111
+  - name: "1111"
+    port: 1111
     targetPort: 1111
   selector:
     app.kubernetes.io/instance: devfile-sample-go-basic1
